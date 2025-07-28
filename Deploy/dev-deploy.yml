@@ -12,7 +12,26 @@ services:
       caddy.reverse_proxy: "{{upstreams 8080}}"
     networks:
       - caddy
+      - internal
+
+  fluxo-db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - fluxo_db_data_dev:/var/lib/postgresql/data
+    networks:
+      - internal
+
+volumes:
+  fluxo_db_data_dev:
 
 networks:
   caddy:
     external: true
+  internal:
+    driver: bridge
+    
