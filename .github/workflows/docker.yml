@@ -36,6 +36,18 @@ jobs:
           context: .
           push: true
           tags: brsktdev/fluxo-api:${{ steps.version.outputs.VERSION }}
+          
+      - name: Create Git Tag (via API)
+        run: |
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/git/refs \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d @- <<EOF
+          {
+            "ref": "refs/tags/${{ steps.version.outputs.VERSION }}",
+            "sha": "${{ github.sha }}"
+          }
+          EOF
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
