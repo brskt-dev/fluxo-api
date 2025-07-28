@@ -5,7 +5,7 @@ Back-end da Plataforma Fluxo Mkt, desenvolvido em .NET 8. Este monolito gerencia
 
 ---
 
-[![Build, Push & Release](https://github.com/brskt-dev/fluxo-api/actions/workflows/docker.yml/badge.svg)](https://github.com/brskt-dev/fluxo-api/actions/workflows/docker.yml)
+[![Build, Push & Release](https://github.com/brskt-dev/fluxo-api/actions/workflows/docker.yml/badge.svg?branch=dev)](https://github.com/brskt-dev/fluxo-api/actions/workflows/docker.yml)
 
 ---
 
