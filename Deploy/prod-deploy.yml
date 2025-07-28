@@ -1,0 +1,18 @@
+services:
+  fluxo-api:
+    image: brsktdev/fluxo-api:prod
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__Default=${DB_CONNECTION_STRING}
+      - Jwt__Secret=${JWT_SECRET}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
+    labels:
+      caddy: api.fluxo.bonelesslab.com
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true
