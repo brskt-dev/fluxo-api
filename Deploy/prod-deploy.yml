@@ -1,6 +1,6 @@
 services:
   fluxo-api:
-    image: brsktdev/fluxo-api:prod
+    image: brsktdev/fluxo-api:main
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__Default=${DB_CONNECTION_STRING}
